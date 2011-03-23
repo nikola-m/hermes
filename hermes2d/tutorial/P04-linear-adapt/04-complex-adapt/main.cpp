@@ -153,6 +153,11 @@ int main(int argc, char* argv[])
 
     // Time measurement.
     cpu_time.tick();
+
+    //Dump matrix to a file
+    FILE *file = fopen(file_name, "w");
+    matrix->dump(FILE *file, const char *matrix, EMatrixDumpFormat fmt = DF_MATLAB_SPARSE);
+    fclose(file);
     
     // Solve the linear system of the reference problem. If successful, obtain the solution.
     if(solver->solve()) Solution::vector_to_solution(solver->get_solution(), ref_space, &ref_sln);
