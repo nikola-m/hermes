@@ -102,7 +102,6 @@ bool read_matrix_and_rhs(char *file_name, int &n, int &nnz,
       case STATE_NNZ:
         if (read_n_numbers(row, 1, buffer)) {
              nnz = (int) buffer[0];
-             printf("%d\n",nnz);
           } 
 
         state = STATE_MATRIX; 
