@@ -245,6 +245,13 @@ int main(int argc, char* argv[])
     }
     if (Space::get_num_dofs(&space) >= NDOF_STOP) done = true;
 
+    //Dump matrix to a file
+    const char* var = "var_name";
+    FILE *file = fopen("maxwell_out", "w");
+    matrix->dump(file, var, DF_PLAIN_ASCII);
+    rhs->dump(file, var, DF_PLAIN_ASCII);
+    fclose(file);
+
     // Clean up.
     delete solver;
     delete matrix;
